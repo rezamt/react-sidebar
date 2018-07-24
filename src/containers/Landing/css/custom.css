@@ -123,7 +123,9 @@ body {
     background-image: url(../img/bg4.jpg);
 }
 
-
+[data-user="user"] {
+    background-image: url(../img/user.jpg);
+}
 /*----------------toggeled sidebar----------------*/
 
 .page-wrapper.toggled .sidebar-wrapper {
@@ -208,7 +210,6 @@ body {
 .sidebar-content {
     max-height: calc(100% - 30px);
     height: calc(100% - 30px);
-    overflow-y: scroll;
     position: relative;
 }
 

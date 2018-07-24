@@ -1,22 +1,42 @@
 import React from 'react'
+import './css/custom.css';
+import './css/custom-themes.css';
 
+import Dashboard from './Dashboard';
+import Navigation from './Navigation';
 
 class Landing extends React.Component {
 
+    constructor(props) {
+        super(props);
 
-    render() {
+        this.state = {
+            toggleNavigation: true
+        }
+    }
 
-        return (
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        );
+    toggleNavigation = (e) => {
+        e.preventDefault();
+
+        this.setState((prevState)=> ({
+            toggleNavigation : !prevState.toggleNavigation
+        }));
+
+        console.log('toggling navigation again.')
     }
 
 
+    render() {
+        return (
+            <div className={ this.state.toggleNavigation ? "page-wrapper chiller-theme sidebar-bg bg1 toggled" : "page-wrapper chiller-theme sidebar-bg bg1 "}>
+                <a id="show-sidebar" className="btn btn-sm btn-dark" href="about:blank" onClick={(e) => {this.toggleNavigation(e)}}>
+                    <i className="fas fa-bars"></i>
+                </a>
+                <Navigation toggleNavigation={this.toggleNavigation}/>
+                <Dashboard/>
+            </div>
+        );
+    }
 }
 
 export default Landing;
